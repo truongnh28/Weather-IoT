@@ -16,7 +16,7 @@ services:
   weather-be:
     depends_on:
       - weather-db
-    image: truongnh28/weather
+    image: truongnh28/weather-iot
     container_name: weather-be
     restart: always
     ports:
