@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+  environment-db:
+    container_name: weather-db
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: weather
+    ports:
+      - "3306:3306"
+    networks:
+      - weather-network
+    volumes:
+      - /db:/var/lib/mysql
+  environment-be:
+    depends_on:
+      - weather-db
+    image: truongnh28/weather
+    container_name: weather-be
+    restart: always
+    ports:
+      - "8000:8000"
+    networks:
+      - weather-network
+networks:
+  weather-network:
