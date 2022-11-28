@@ -1,6 +1,6 @@
 version: '3.7'
 services:
-  environment-db:
+  weather-db:
     container_name: weather-db
     image: mysql:8
     restart: always
@@ -13,7 +13,7 @@ services:
       - weather-network
     volumes:
       - /db:/var/lib/mysql
-  environment-be:
+  weather-be:
     depends_on:
       - weather-db
     image: truongnh28/weather
